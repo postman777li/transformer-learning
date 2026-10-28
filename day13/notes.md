@@ -22,7 +22,15 @@ autoregressive、temperature、top-k/top-p。
 
 计划：写 generate()。
 
-[code.py](code.py) 暂时留空。
+[code.py](code.py) 已从原始文件 `day13_generate.py` 归档，保留原代码与注释。
+
+从仓库根目录运行：
+
+```bash
+python day13/code.py
+```
+
+依赖 PyTorch。这里只完成语法检查，尚未验证训练或推理结果。
 
 ---
 

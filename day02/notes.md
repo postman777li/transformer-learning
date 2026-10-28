@@ -22,7 +22,15 @@ token→向量、矩阵乘法、dot product、shape。
 
 计划：手写 embedding 示例。
 
-[code.py](code.py) 暂时留空。
+[code.py](code.py) 已从原始文件 `day02_embedding.py` 归档，保留原代码与注释。
+
+从仓库根目录运行：
+
+```bash
+python day02/code.py
+```
+
+依赖 PyTorch。这里只完成语法检查，尚未验证训练或推理结果。
 
 ---
 

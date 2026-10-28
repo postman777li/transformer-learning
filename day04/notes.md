@@ -22,7 +22,15 @@ QKV 为什么存在、Wq/Wk/Wv 为什么要训练。
 
 计划：从零写 Self-Attention。
 
-[code.py](code.py) 暂时留空。
+[code.py](code.py) 已从原始文件 `day04_QKV.py` 归档，保留原代码与注释。
+
+从仓库根目录运行：
+
+```bash
+python day04/code.py
+```
+
+依赖 PyTorch。这里只完成语法检查，尚未验证训练或推理结果。
 
 ---
 
