@@ -67,13 +67,13 @@ $$
 Key 的维度为 $d_k=1$，缩放因子 $\sqrt{d_k}=1$，因此数值不变。经过 Softmax：
 
 $$
-\operatorname{softmax}([9,3])\approx[0.9975,0.0025]
+\mathrm{softmax}([9,3])\approx[0.9975,0.0025]
 $$
 
 按权重汇总 V，使用未舍入的权重计算可得：
 
 $$
-\operatorname{head}_1
+\mathrm{head}_1
 =\frac{e^9\times9+e^3\times3}{e^9+e^3}
 \approx8.985
 $$
@@ -106,13 +106,13 @@ $$
 同样有 $d_k=1$，缩放后数值不变。经过 Softmax：
 
 $$
-\operatorname{softmax}([2,9])\approx[0.0009,0.9991]
+\mathrm{softmax}([2,9])\approx[0.0009,0.9991]
 $$
 
 加权汇总得到：
 
 $$
-\operatorname{head}_2
+\mathrm{head}_2
 =\frac{e^2\times2+e^9\times9}{e^2+e^9}
 \approx8.994
 $$
@@ -129,7 +129,7 @@ $$
 沿特征维度拼接：
 
 $$
-\operatorname{Concat}(\operatorname{head}_1,\operatorname{head}_2)
+\mathrm{Concat}(\mathrm{head}_1,\mathrm{head}_2)
 \approx[8.985,\ 8.994]
 $$
 
@@ -152,8 +152,8 @@ $$
 然后独立计算注意力：
 
 $$
-\operatorname{head}_i=
-\operatorname{softmax}\left(\frac{Q_iK_i^\top}{\sqrt{d_k}}\right)V_i
+\mathrm{head}_i=
+\mathrm{softmax}\left(\frac{Q_iK_i^\top}{\sqrt{d_k}}\right)V_i
 $$
 
 其中 Softmax 沿 Key 的位置维度计算，使每个查询对应的一组权重之和为 1。
@@ -163,8 +163,8 @@ $$
 多头注意力的完整表达为：
 
 $$
-\operatorname{MultiHead}(X_Q,X_K,X_V)
-=\operatorname{Concat}(\operatorname{head}_1,\ldots,\operatorname{head}_h)W_O
+\mathrm{MultiHead}(X_Q,X_K,X_V)
+=\mathrm{Concat}(\mathrm{head}_1,\ldots,\mathrm{head}_h)W_O
 $$
 
 - **各个 Head 的投影矩阵**：让模型有机会学习不同的特征表示和关注方式。
