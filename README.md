@@ -11,7 +11,7 @@
 
 ## 当前整理进度
 
-笔记：已整理 Day 1（Transformer 的动机、RNN/LSTM、注意力直觉）、Day 2（Embedding 与矩阵基础）、Day 3（Attention 直觉与手算）、Day 4（Q/K/V 图解与参数训练）及 Day 6（多头直觉、招聘例子、手算过程与核心公式），其他笔记待补。
+笔记：已整理 Day 1（Transformer 的动机、RNN/LSTM、注意力直觉）、Day 2（Embedding 与矩阵基础）、Day 3（Attention 直觉与手算）、Day 4（Q/K/V 图解与参数训练）、Day 5（缩放与矩阵维度图解）及 Day 6（多头直觉、招聘例子、手算过程与核心公式），其他笔记待补。
 
 代码：已归档 Day 2–5、Day 8–14 的原始代码，以及 Day 11 的补充练习。Day 1、6、7、16 未找到对应文件，Day 15 原文件为空，继续保留占位。上传状态不代表实际学习进度。
 
@@ -23,7 +23,7 @@
 | Day 2 | Embedding + 必要矩阵基础 | token→向量、矩阵乘法、dot product、shape | 手写 embedding 示例 | [笔记](day02/notes.md) · [代码](day02/code.py) | 笔记已整理；代码已归档 |
 | Day 3 | Attention 核心直觉 | 一个 token 怎么关注另一个 token | 手算最简单 Attention | [笔记](day03/notes.md) · [代码](day03/code.py) | 笔记已整理；代码已归档 |
 | Day 4 | Q / K / V 彻底搞懂 | QKV 为什么存在、Wq/Wk/Wv 为什么要训练 | 从零写 Self-Attention | [笔记](day04/notes.md) · [代码](day04/code.py) | 图文笔记已整理；代码已归档 |
-| Day 5 | Scaled Dot-Product Attention | QKᵀ/√d、softmax、每个维度怎么变化 | 完整 Attention 函数 | [笔记](day05/notes.md) · [代码](day05/code.py) | 待整理；代码已归档 |
+| Day 5 | Scaled Dot-Product Attention | QKᵀ/√d、softmax、每个维度怎么变化 | 完整 Attention 函数 | [笔记](day05/notes.md) · [代码](day05/code.py) | 图文笔记已整理；代码已归档 |
 | Day 6 | Multi-Head Attention | 多头到底多在哪里、为什么 concatenate | 手写 MultiHeadAttention | [笔记](day06/notes.md) · [代码](day06/code.py) | 例子与概念已整理，后续待补；代码待补 |
 | Day 7 | Position + Mask | 位置编码、causal mask、为什么 GPT 不会偷看答案 | 手写 mask | [笔记](day07/notes.md) · [代码](day07/code.py) | 待整理；代码待补 |
 | Day 8 | FFN / Residual / LayerNorm | Transformer Block 另外三块的作用 | 手写 TransformerBlock | [笔记](day08/notes.md) · [代码](day08/code.py) | 待整理；代码已归档 |
