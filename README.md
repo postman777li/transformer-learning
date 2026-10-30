@@ -87,5 +87,4 @@ Day 10 已加入 MiniGPT 前向演示，直接运行会打印输入、Logits 形
 | [day13/code.py](day13/code.py) | `day13_generate.py` |
 | [day14/code.py](day14/code.py) | `day14_kvcache.py` |
 | [day11/day11Test.py](day11/day11Test.py) | `day11Test.py` |
-
 | [day15/code.py](day15/code.py) | 学习对话中的 Day 15 完整教学代码 |
