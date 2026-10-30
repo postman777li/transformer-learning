@@ -11,7 +11,7 @@
 
 ## 当前整理进度
 
-笔记：已整理 Day 1（Transformer 的动机、RNN/LSTM、注意力直觉）、Day 2（Embedding 与矩阵基础）、Day 3（Attention 直觉与手算）、Day 4（Q/K/V 图解与参数训练）、Day 5（缩放与矩阵维度图解）及 Day 6（多头视角、拆头维度、Concat 与输出投影图解）、Day 7（位置编码、因果掩码与并行训练图解），其他笔记待补。
+笔记：已整理 Day 1–8。其中 Day 4–8 配有流程图和数字示意，其他笔记待补。
 
 代码：已归档 Day 2–5、Day 8–14 的原始代码，以及 Day 11 的补充练习。Day 1、6、7、16 未找到对应文件，Day 15 原文件为空，继续保留占位。上传状态不代表实际学习进度。
 
@@ -26,7 +26,7 @@
 | Day 5 | Scaled Dot-Product Attention | QKᵀ/√d、softmax、每个维度怎么变化 | 完整 Attention 函数 | [笔记](day05/notes.md) · [代码](day05/code.py) | 图文笔记已整理；代码已归档 |
 | Day 6 | Multi-Head Attention | 多头到底多在哪里、为什么 concatenate | 手写 MultiHeadAttention | [笔记](day06/notes.md) · [代码](day06/code.py) | 图文笔记已整理；代码待补 |
 | Day 7 | Position + Mask | 位置编码、causal mask、为什么 GPT 不会偷看答案 | 手写 mask | [笔记](day07/notes.md) · [代码](day07/code.py) | 图文笔记已整理；代码待补 |
-| Day 8 | FFN / Residual / LayerNorm | Transformer Block 另外三块的作用 | 手写 TransformerBlock | [笔记](day08/notes.md) · [代码](day08/code.py) | 待整理；代码已归档 |
+| Day 8 | FFN / Residual / LayerNorm | Transformer Block 另外三块的作用 | 手写 TransformerBlock | [笔记](day08/notes.md) · [代码](day08/code.py) | 图文笔记已整理；代码已同步 |
 | Day 9 | 原版 Transformer 全架构 | Encoder、Decoder、Cross Attention | 搭完整 Transformer | [笔记](day09/notes.md) · [代码](day09/code.py) | 待整理；代码已归档 |
 | Day 10 | GPT 是怎么从 Transformer 变来的 | Decoder-only、next-token prediction | 搭 MiniGPT 骨架 | [笔记](day10/notes.md) · [代码](day10/code.py) | 待整理；代码已归档 |
 | Day 11 | 从零写 Mini-GPT | Embedding→Blocks→LM Head 全链路 | 自己完成 GPT | [笔记](day11/notes.md) · [代码](day11/code.py) | 待整理；代码已归档 |
@@ -69,7 +69,7 @@ python day11/day11Test.py
 
 Day 10 只有模块定义，直接运行无输出。Day 11 补充练习及 Day 12–14 含训练流程，执行耗时取决于设备；Day 14 会生成 `day14_minigpt.pt`。生成的模型权重不纳入源码版本管理。
 
-本次归档保留原代码，已通过 Python 语法检查及原文件字节一致性核对；尚未执行训练和推理验证。
+归档代码已通过 Python 语法检查；Day 8 已按最新提供的版本同步。当前整理环境未安装 PyTorch，尚未执行训练和推理验证。
 
 ### 原文件对应关系
 
