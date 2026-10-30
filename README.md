@@ -11,7 +11,7 @@
 
 ## 当前整理进度
 
-笔记：已整理 Day 1–13。其中 Day 4–13 配有流程图和示意图，其他笔记待补。
+笔记：已整理 Day 1–14。其中 Day 4–14 配有流程图和示意图，其他笔记待补。
 
 代码：已归档 Day 2–5、Day 8–14 的原始代码，以及 Day 11 的补充练习。Day 1、6、7、16 未找到对应文件，Day 15 原文件为空，继续保留占位。上传状态不代表实际学习进度。
 
@@ -32,7 +32,7 @@
 | Day 11 | 从零写 Mini-GPT | Embedding→Blocks→LM Head 全链路 | 自己完成 GPT | [笔记](day11/notes.md) · [代码](day11/code.py) | 图文笔记已整理；代码已归档 |
 | Day 12 | Transformer 怎么训练 | logits、cross entropy、teacher forcing、batch | 真正训练 Mini-GPT | [笔记](day12/notes.md) · [代码](day12/code.py) | 图文笔记已整理；代码已归档 |
 | Day 13 | Transformer 怎么生成文字 | autoregressive、temperature、top-k/top-p | 写 generate() | [笔记](day13/notes.md) · [代码](day13/code.py) | 图文笔记已整理；代码已归档 |
-| Day 14 | KV Cache + 推理机制 | 为什么生成慢、KV 到底缓存什么 | 实现/分析 KV Cache | [笔记](day14/notes.md) · [代码](day14/code.py) | 待整理；代码已归档 |
+| Day 14 | KV Cache + 推理机制 | 为什么生成慢、KV 到底缓存什么 | 实现/分析 KV Cache | [笔记](day14/notes.md) · [代码](day14/code.py) | 图文笔记已整理；代码已归档 |
 | Day 15 | 现代 LLM：Llama | RoPE、RMSNorm、SwiGLU、GQA 及其改动原因 | 看懂 Llama Block | [笔记](day15/notes.md) · [代码](day15/code.py) | 待整理；代码原文件为空 |
 | Day 16 | 高手课 + 总考试 | FlashAttention、复杂度、长上下文、读源码方法 | 独立手写核心模块 | [笔记](day16/notes.md) · [代码](day16/code.py) | 待整理；代码待补 |
 
