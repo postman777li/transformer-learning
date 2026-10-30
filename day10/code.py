@@ -90,32 +90,9 @@ class TransformerBlock(nn.Module):
 
         return x, weights
     
-class PositionalEncoding(nn.Module):
-    def __init__(self, d_model=512, max_len=512):
-        super().__init__()
-
-        assert d_model % 2 == 0
-
-        position = torch.arange(
-            max_len, dtype=torch.float32
-        ).unsqueeze(1)
-
-        div_term = torch.exp(
-            torch.arange(0, d_model, 2, dtype=torch.float32)
-            * (-math.log(10000.0) / d_model)
-        )
-
-        pe = torch.zeros(max_len, d_model)
-
-        pe[:, 0::2] = torch.sin(position * div_term)
-        pe[:, 1::2] = torch.cos(position * div_term)
-
-        self.register_buffer("pe", pe.unsqueeze(0))
-
-    def forward(self, x):
-        T = x.size(1)
-        return x + self.pe[:, :T, :]
-
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
 
 class MiniGPT(nn.Module):
     def __init__(
@@ -124,56 +101,94 @@ class MiniGPT(nn.Module):
         d_model=512,
         num_heads=8,
         num_layers=4,
-        d_ff=2048,
-        max_len=512
+        max_len=128
     ):
         super().__init__()
 
-        # Token ID → 向量
-        self.token_embedding = nn.Embedding(
+        self.max_len = max_len
+
+        # Token Embedding
+        self.token_emb = nn.Embedding(
             vocab_size, d_model
         )
 
-        # 固定正弦位置编码
-        self.position = PositionalEncoding(
-            d_model, max_len
+        # 可学习位置 Embedding
+        self.pos_emb = nn.Embedding(
+            max_len, d_model
         )
 
-        # 堆叠多个 Day 8 的 TransformerBlock
+        # 多个 Transformer Block
         self.blocks = nn.ModuleList([
-            TransformerBlock(
-                d_model=d_model,
-                num_heads=num_heads,
-                d_ff=d_ff
-            )
+            TransformerBlock(d_model, num_heads)
             for _ in range(num_layers)
         ])
 
-        self.final_norm = nn.LayerNorm(d_model)
+        # 最终归一化
+        self.ln_final = nn.LayerNorm(d_model)
 
-        # 512 维 → 整个词表大小
+        # LM Head：隐藏向量映射到词表
         self.lm_head = nn.Linear(
             d_model, vocab_size, bias=False
         )
 
     def forward(self, input_ids):
-        # input_ids: (B, T)
+        B, T = input_ids.shape
 
-        # ① Embedding
-        x = self.token_embedding(input_ids)
+        assert T <= self.max_len
 
-        # ② 位置编码
-        x = self.position(x)
+        # ① Token Embedding
+        token_vectors = self.token_emb(input_ids)
 
-        # ③ 逐层经过 TransformerBlock
+        # ② Position Embedding
+        positions = torch.arange(
+            T, device=input_ids.device
+        )
+
+        position_vectors = self.pos_emb(positions)
+
+        # ③ 融合 Token 和 Position 信息
+        x = token_vectors + position_vectors
+
+        # ④ 经过多个 Transformer Block
         for block in self.blocks:
             x, _ = block(x)
 
-        # ④ 最终归一化
-        x = self.final_norm(x)
+        # ⑤ 最终归一化
+        x = self.ln_final(x)
 
-        # ⑤ 映射成词表 logits
+        # ⑥ 映射到词表，得到 Logits
         logits = self.lm_head(x)
 
-        # (B, T, vocab_size)
         return logits
+
+
+torch.manual_seed(42)
+
+vocab_size = 10000
+
+model = MiniGPT(
+    vocab_size=vocab_size,
+    d_model=512,
+    num_heads=8,
+    num_layers=4,
+    max_len=128
+)
+
+# 两个序列，每个序列10个Token
+input_ids = torch.randint(
+    0, vocab_size, (2, 10)
+)
+
+logits = model(input_ids)
+
+print("Input:", input_ids.shape)
+print("Logits:", logits.shape)
+
+# 取第一个序列最后一个位置的预测
+last_logits = logits[0, -1, :]
+
+probs = F.softmax(last_logits, dim=-1)
+
+predicted_id = torch.argmax(probs).item()
+
+print("Predicted Token ID:", predicted_id)

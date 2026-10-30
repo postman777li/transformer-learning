@@ -11,7 +11,7 @@
 
 ## 当前整理进度
 
-笔记：已整理 Day 1–9。其中 Day 4–9 配有流程图和示意图，其他笔记待补。
+笔记：已整理 Day 1–10。其中 Day 4–10 配有流程图和示意图，其他笔记待补。
 
 代码：已归档 Day 2–5、Day 8–14 的原始代码，以及 Day 11 的补充练习。Day 1、6、7、16 未找到对应文件，Day 15 原文件为空，继续保留占位。上传状态不代表实际学习进度。
 
@@ -28,7 +28,7 @@
 | Day 7 | Position + Mask | 位置编码、causal mask、为什么 GPT 不会偷看答案 | 手写 mask | [笔记](day07/notes.md) · [代码](day07/code.py) | 图文笔记已整理；代码待补 |
 | Day 8 | FFN / Residual / LayerNorm | Transformer Block 另外三块的作用 | 手写 TransformerBlock | [笔记](day08/notes.md) · [代码](day08/code.py) | 图文笔记已整理；代码已同步 |
 | Day 9 | 原版 Transformer 全架构 | Encoder、Decoder、Cross Attention | 搭完整 Transformer | [笔记](day09/notes.md) · [代码](day09/code.py) | 图文笔记已整理；代码已归档 |
-| Day 10 | GPT 是怎么从 Transformer 变来的 | Decoder-only、next-token prediction | 搭 MiniGPT 骨架 | [笔记](day10/notes.md) · [代码](day10/code.py) | 待整理；代码已归档 |
+| Day 10 | GPT 是怎么从 Transformer 变来的 | Decoder-only、next-token prediction | 搭 MiniGPT 骨架 | [笔记](day10/notes.md) · [代码](day10/code.py) | 图文笔记已整理；代码已同步 |
 | Day 11 | 从零写 Mini-GPT | Embedding→Blocks→LM Head 全链路 | 自己完成 GPT | [笔记](day11/notes.md) · [代码](day11/code.py) | 待整理；代码已归档 |
 | Day 12 | Transformer 怎么训练 | logits、cross entropy、teacher forcing、batch | 真正训练 Mini-GPT | [笔记](day12/notes.md) · [代码](day12/code.py) | 待整理；代码已归档 |
 | Day 13 | Transformer 怎么生成文字 | autoregressive、temperature、top-k/top-p | 写 generate() | [笔记](day13/notes.md) · [代码](day13/code.py) | 待整理；代码已归档 |
@@ -67,7 +67,7 @@ python day02/code.py
 python day11/day11Test.py
 ```
 
-Day 10 只有模块定义，直接运行无输出。Day 11 补充练习及 Day 12–14 含训练流程，执行耗时取决于设备；Day 14 会生成 `day14_minigpt.pt`。生成的模型权重不纳入源码版本管理。
+Day 10 已加入 MiniGPT 前向演示，直接运行会打印输入、Logits 形状与预测 ID。Day 11 补充练习及 Day 12–14 含训练流程，执行耗时取决于设备；Day 14 会生成 `day14_minigpt.pt`。生成的模型权重不纳入源码版本管理。
 
 归档代码已通过 Python 语法检查；Day 8 已按最新提供的版本同步。当前整理环境未安装 PyTorch，尚未执行训练和推理验证。
 
@@ -81,7 +81,7 @@ Day 10 只有模块定义，直接运行无输出。Day 11 补充练习及 Day 1
 | [day05/code.py](day05/code.py) | `day5_dk.py` |
 | [day08/code.py](day08/code.py) | `day8.py` |
 | [day09/code.py](day09/code.py) | `day9_EncoderDecoder.py` |
-| [day10/code.py](day10/code.py) | `day10_MiniGPT.py` |
+| [day10/code.py](day10/code.py) | `day10_MiniGPT.py` + 学习对话中的 MiniGPT 骨架 |
 | [day11/code.py](day11/code.py) | `day11_GPT.py` |
 | [day12/code.py](day12/code.py) | `day12_Train.py` |
 | [day13/code.py](day13/code.py) | `day13_generate.py` |
