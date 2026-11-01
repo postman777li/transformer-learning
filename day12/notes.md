@@ -16,9 +16,9 @@
 
 假设正确目标是 `code`：预测它的概率为 0.8 时，单位置损失约 0.223；只有 0.1 时，损失约 2.303。正确词的概率越低，惩罚越大。
 
-$$
+```math
 \mathcal{L}=-\frac{1}{BT}\sum_{b,t}\log p_\theta(y_{b,t}\mid x_{b,\le t})
-$$
+```
 
 这就是本例所有位置平均的交叉熵。`F.cross_entropy` 接收 Logits 和整数目标，内部完成所需计算，不要先手工 Softmax。
 

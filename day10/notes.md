@@ -25,10 +25,9 @@
 
 ## 3. Next-Token Prediction 与 Logits
 
-$$
-P(x_{t+1}\mid x_1,\ldots,x_t)
-=\mathrm{softmax}(z_t)
-$$
+```math
+P(x_{t+1}\mid x_1,\ldots,x_t) =\mathrm{softmax}(z_t)
+```
 
 `z_t` 是位置 t 对整个词表的分数向量。输入 `[B,T]` 经过 Embedding 和 Block 后为 `[B,T,C]`，LM Head 映射成 `[B,T,V]` 的 **Logits**，并不是 Token ID。
 

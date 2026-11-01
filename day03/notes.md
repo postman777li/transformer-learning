@@ -44,9 +44,9 @@ scores = [1, 0, 1]
 
 ### 第二步：Softmax 转换为权重
 
-$$
+```math
 w_i=\frac{e^{s_i}}{\sum_j e^{s_j}}
-$$
+```
 
 ```text
 softmax([1, 0, 1]) ≈ [0.4223, 0.1554, 0.4223]
@@ -56,9 +56,9 @@ softmax([1, 0, 1]) ≈ [0.4223, 0.1554, 0.4223]
 
 ### 第三步：加权汇总向量
 
-$$
+```math
 A_{\mathrm{new}}=w_AA+w_BB+w_CC
-$$
+```
 
 ```text
 A_new ≈ 0.4223×[1,0] + 0.1554×[0,1] + 0.4223×[1,1]
@@ -88,10 +88,9 @@ A_new ≈ 0.4223×[1,0] + 0.1554×[0,1] + 0.4223×[1,1]
 
 本例直接用原始向量匹配、汇总，没有学习到的 Q/K/V 投影，也没有缩放。标准形式是：
 
-$$
-\mathrm{Attention}(Q,K,V)
-=\mathrm{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V
-$$
+```math
+\mathrm{Attention}(Q,K,V) =\mathrm{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V
+```
 
 Q 用于查询，K 用于匹配，V 提供被汇总的信息。具体投影与缩放留到 Day 4、Day 5；本日重点是理解“分数 → 权重 → 汇总”。
 

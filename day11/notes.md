@@ -20,9 +20,9 @@
 | Final LayerNorm | 最后规范化隐藏特征 |
 | LM Head | 512 维映射到词表 17 个候选分数 |
 
-$$
+```math
 \mathrm{Logits}=\mathrm{LN}(\mathrm{Blocks}(E+P))W_{\mathrm{LM}}
-$$
+```
 
 每个 Block 内是 `x + Attention(LN(x))`，再执行 `h + FFN(LN(h))`。最终输出 `[2,10,17]`，每个位置都预测它后面的 Token。
 

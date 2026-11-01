@@ -75,19 +75,17 @@ output = out_proj(out)
 
 为避免重复投影，这里始终以原始输入 X 表达 Self-Attention：
 
-$$
+```math
 Q_i=XW_i^Q,\qquad K_i=XW_i^K,\qquad V_i=XW_i^V
-$$
+```
 
-$$
-\mathrm{head}_i
-=\mathrm{softmax}\left(\frac{Q_iK_i^\top}{\sqrt{D}}\right)V_i
-$$
+```math
+\mathrm{head}_i =\mathrm{softmax}\left(\frac{Q_iK_i^\top}{\sqrt{D}}\right)V_i
+```
 
-$$
-\mathrm{MultiHead}(X)
-=\mathrm{Concat}(\mathrm{head}_1,\ldots,\mathrm{head}_H)W^O
-$$
+```math
+\mathrm{MultiHead}(X) =\mathrm{Concat}(\mathrm{head}_1,\ldots,\mathrm{head}_H)W^O
+```
 
 本例每头投影矩阵为 `[512,64]`，拼接后的输出矩阵为 `[512,512]`；公式省略偏置。
 

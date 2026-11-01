@@ -35,11 +35,11 @@ ID 就像学号：1002 不代表比 1001 能力更强。同样，208 不代表�
 
 **Embedding 将离散 ID 映射为连续向量；基本操作是取参数表中对应的行，不是查表时重新计算词义。**
 
-$$
+```math
 E\in\mathbb{R}^{V\times C}
-$$
+```
 
-其中 $V$ 是词表大小，$C$ 是向量维度。
+其中 $`V`$ 是词表大小，$`C`$ 是向量维度。
 
 ### 表从哪里来？没见过的词怎么办？
 
@@ -80,9 +80,9 @@ Token IDs：[[12, 35, 208], [51, 9, 300]]
 
 常见表示是：
 
-$$
+```math
 X\in\mathbb{R}^{B\times T\times C}
-$$
+```
 
 单句不带 Batch 维度时，`[3]` 个 ID 会变成 `[3,4]`；同一批句子长度不同时，通常需要 Padding 等方式整理。
 
@@ -124,18 +124,9 @@ print(x.ndim)   # 3：张量有 3 条轴
 
 这可以用一次矩阵乘法完成：
 
-$$
-xW=
-\begin{bmatrix}0.6&0.8&0.9&0.2\end{bmatrix}
-\begin{bmatrix}
-1&0&1\\
-1&0&0\\
-0&1&1\\
-0&-1&0
-\end{bmatrix}
-=
-\begin{bmatrix}1.4&0.7&1.5\end{bmatrix}
-$$
+```math
+xW= \begin{bmatrix}0.6&0.8&0.9&0.2\end{bmatrix} \begin{bmatrix} 1&0&1\\ 1&0&0\\ 0&1&1\\ 0&-1&0 \end{bmatrix} = \begin{bmatrix}1.4&0.7&1.5\end{bmatrix}
+```
 
 W 的 **4 行对应原来的 4 个特征，3 列对应新的 3 个特征**。输出的每个数，都由输入向量与 W 的对应列做点积得到。
 
@@ -167,9 +158,9 @@ print(y)  # tensor([[1.4000, 0.7000, 1.5000]])，shape [1,3]
 
 数学上右乘的 W 是 `[4,3]`；PyTorch 的 `linear.weight` 存为 `[3,4]`，计算等价于 `x @ linear.weight.T`。这里关闭了偏置；默认的 `nn.Linear` 包含偏置，对应：
 
-$$
+```math
 y=xW+b
-$$
+```
 
 **Linear 改变的是特征表示，不是 Token 编号。** 对每个 Token 用同一套权重，只改变最后一维：
 
@@ -182,21 +173,19 @@ $$
 
 ## 5. 点积与矩阵乘法
 
-先看两个向量：$a=[1,2]$、$b=[2,3]$。对应元素相乘再求和：
+先看两个向量：$`a=[1,2]`$、$`b=[2,3]`$。对应元素相乘再求和：
 
-$$
+```math
 a\cdot b=1\times2+2\times3=8
-$$
+```
 
 **点积的结果是标量。** 它可以表示匹配分数，但也受向量长度影响，不能直接把数值大小等同于语义相似度；比较方向时常用余弦相似度。
 
 矩阵乘法则把多次“行与列的点积”组织起来：
 
-$$
-\begin{bmatrix}1&2\\3&4\end{bmatrix}
-\begin{bmatrix}5&6\\7&8\end{bmatrix}
-=\begin{bmatrix}19&22\\43&50\end{bmatrix}
-$$
+```math
+\begin{bmatrix}1&2\\3&4\end{bmatrix} \begin{bmatrix}5&6\\7&8\end{bmatrix} =\begin{bmatrix}19&22\\43&50\end{bmatrix}
+```
 
 例如左上角的 `19 = 1×5 + 2×7`，来自左矩阵第一行与右矩阵第一列。相乘时，左矩阵的列数必须等于右矩阵的行数。
 

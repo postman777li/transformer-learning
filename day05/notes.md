@@ -16,17 +16,15 @@
 
 点积是多个乘积项的和：
 
-$$
+```math
 q\cdot k=\sum_{i=1}^{d_k}q_i k_i
-$$
+```
 
 若各分量独立、均值为 0、方差为 1，且乘积项之间独立：
 
-$$
-\mathrm{Var}(q\cdot k)=d_k,
-\qquad
-\mathrm{Std}(q\cdot k)=\sqrt{d_k}
-$$
+```math
+\mathrm{Var}(q\cdot k)=d_k, \qquad \mathrm{Std}(q\cdot k)=\sqrt{d_k}
+```
 
 因此除以标准差尺度，使缩放后方差为 1；若除以 d_k，方差会变成 `1/d_k`，随维度增大而过小。这是常见统计假设下的解释，不保证真实模型严格满足这些假设。
 
@@ -59,11 +57,9 @@ V = [[9,2], [3,9]]
 
 K 的每一行是一份候选特征；转置后，每一列对应一个 Key。于是 Q 与这些列相乘，就一次得到对所有 Key 的分数：
 
-$$
-[2,1]
-\begin{bmatrix}9&3\\1&4.5\end{bmatrix}
-=[19,10.5]
-$$
+```math
+[2,1] \begin{bmatrix}9&3\\1&4.5\end{bmatrix} =[19,10.5]
+```
 
 招聘例子只有一个 Q。Self-Attention 则让每个 Token 都生成 Q，一次算出全部位置的匹配关系：
 
@@ -80,10 +76,9 @@ $$
 
 ## 4. 公式与代码对应
 
-$$
-\mathrm{Attention}(Q,K,V)
-=\mathrm{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V
-$$
+```math
+\mathrm{Attention}(Q,K,V) =\mathrm{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V
+```
 
 [code.py](code.py) 保留原始招聘练习，核心是：
 

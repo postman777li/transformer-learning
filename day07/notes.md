@@ -8,9 +8,9 @@
 
 一种做法是给每个位置一个向量，与 Token 向量相加：
 
-$$
+```math
 X=E+P
-$$
+```
 
 ![Token 内容向量与位置向量逐元素相加，维度保持不变](assets/position-addition.svg)
 
@@ -20,13 +20,13 @@ $$
 
 原始 Transformer 用不同频率的 sin/cos 生成固定向量，无需训练位置参数：
 
-$$
+```math
 PE(pos,2i)=\sin\left(\frac{pos}{10000^{2i/d_{\mathrm{model}}}}\right)
-$$
+```
 
-$$
+```math
 PE(pos,2i+1)=\cos\left(\frac{pos}{10000^{2i/d_{\mathrm{model}}}}\right)
-$$
+```
 
 `pos` 是位置编号，`i` 是频率组编号；这里均从 0 开始，偶数维用 sin，奇数维用 cos。
 
@@ -52,14 +52,9 @@ PE(1)   ≈ [0.84147, 0.54030, 0.01000, 0.99995]
 
 图中行是 Query、列是 Key。若 `1=允许`、`0=禁止`，长度 4 的矩阵是：
 
-$$
-\begin{bmatrix}
-1&0&0&0\\
-1&1&0&0\\
-1&1&1&0\\
-1&1&1&1
-\end{bmatrix}
-$$
+```math
+\begin{bmatrix} 1&0&0&0\\ 1&1&0&0\\ 1&1&1&0\\ 1&1&1&1 \end{bmatrix}
+```
 
 **在 Softmax 前，把禁止位置的分数设为负无穷。** 因为指数值趋于 0，屏蔽位置最终权重为 0，其余位置重新归一化。
 

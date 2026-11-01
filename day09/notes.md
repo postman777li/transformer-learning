@@ -29,16 +29,13 @@ Decoder 根据目标前缀和源句表示预测下一 Token：只有 `我` 还�
 
 对 Cross-Attention：
 
-$$
-Q=H_{\mathrm{dec}}W_Q,\qquad
-K=H_{\mathrm{enc}}W_K,\qquad
-V=H_{\mathrm{enc}}W_V
-$$
+```math
+Q=H_{\mathrm{dec}}W_Q,\qquad K=H_{\mathrm{enc}}W_K,\qquad V=H_{\mathrm{enc}}W_V
+```
 
-$$
-\mathrm{CrossAttention}(Q,K,V)
-=\mathrm{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V
-$$
+```math
+\mathrm{CrossAttention}(Q,K,V) =\mathrm{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V
+```
 
 计算方式与 Self-Attention 相同，区别是查询和被查询的信息来自不同序列。本次 Pre-LN 代码会先归一化目标侧隐藏状态，再生成 Q。
 
